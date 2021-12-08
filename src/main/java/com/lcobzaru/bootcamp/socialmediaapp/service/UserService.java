@@ -29,6 +29,7 @@ public class UserService {
 //        customUser.setPassword(passwordEncoder.encode(user.getPassword()));
         customUser.setPassword(user.getPassword());
         customUser.setGender(user.getGender());
+        customUser.setUsername(user.getUsername());
         customUser.setBirthDate(user.getBirthDate());
 
         // Persist user in database
@@ -47,8 +48,10 @@ public class UserService {
                 .lastName(persistedUser.getLastName())
                 .password(persistedUser.getPassword())
                 .gender(persistedUser.getGender())
+                .username(persistedUser.getUsername())
                 .birthDate(persistedUser.getBirthDate())
                 .build();
+
     }
 
     public Optional<User> getById(Long id){
