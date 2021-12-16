@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 import static java.util.Collections.emptyList;
@@ -23,7 +22,7 @@ public class MyUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        return  new User("foo", "foo", new ArrayList<>());
         Optional<com.lcobzaru.bootcamp.socialmediaapp.models.User> user = userRepository.findByUsername(username);
-        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));;
+        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));
         return new User(user.get().getUsername(),user.get().getPassword(),emptyList());
     }
 }
